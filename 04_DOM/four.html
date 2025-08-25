@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Finalize</title>
+</head>
+<body style="background-color: #212121; color: aliceblue;" >
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(langName){
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`
+        document.querySelector(`.language`).appendChild(li)
+    }
+    addLanguage("python")
+    addLanguage("TypeScript")
+    
+    function addOptiLanguage(langName){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector(`.language`).appendChild(li)
+    }
+    addOptiLanguage("golang")
+    addOptiLanguage("C sharp")
+
+    // Edit
+
+    const secondLang = document.querySelector("li:nth-child(2)")
+    // console.log(secondLang);
+    // secondLang.innerHTML  = "Mojo"
+    const newli = document.createElement('li')
+    newli.textContent = "mojo"
+    secondLang.replaceWith(newli)
+
+    // edit
+
+    const firstlang = document.querySelector("li:first-child")
+    firstlang.outerHTML = '<li>TypeScript</li>'
+
+    // remove
+
+    const lastlang = document.querySelector("li:last-child")
+    lastlang.remove()
+</script>
+</html>
+
+/* dom kase kam krta hy, kia is k behind the secrets hn, kia kia optimize approach hoti hy,
+pora tree structure kase hota hy, node list kia kia ati hy, aik aik cheez kase traverse hoti hy,
+(node list to actual documents objects model hy hamary pass) wo bhi dakha hy hum na, traversing 
+bhi dakhi hum na, parent child mn aur child parent mn kase jaty hn, new element bhi banany seekhy 
+hum na, padding, styling ,margin sab hum na seekh leya is k elawa is video mn edit, add, remove,
+replace */
